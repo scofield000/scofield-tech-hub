@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buffer Overflow Exploitation - Scofield Tech Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 2rem;
+      background: linear-gradient(135deg, #87CEEB, #B0E0E6);
+      color: #2c3e50;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #1E90FF;
+      margin-bottom: 0.5rem;
+    }
+    .meta {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .tags span {
+      background: #B0E0E6;
+      color: #4682B4;
+      padding: 0.3rem 0.8rem;
+      margin-right: 0.5rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #1E90FF;
+      font-weight: 500;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Buffer Overflow Exploitation in Legacy Systems</h1>
+    <div class="meta">Published: May 01, 2025</div>
+    <div class="tags">
+      <span>Exploitation</span>
+      <span>Binary Analysis</span>
+    </div>
+
+    <p>
+      Buffer overflows are one of the most classic and dangerous vulnerabilities in software. In this write-up, we explore how these issues occur in legacy systems, and how attackers can exploit them for arbitrary code execution or system compromise.
+    </p>
+
+    <h3>Understanding the Vulnerability</h3>
+    <p>
+      A buffer overflow occurs when data exceeds the storage capacity of the buffer and overwrites adjacent memory. This can corrupt data, crash the program, or even allow attackers to execute malicious code.
+    </p>
+
+    <h3>Identifying Vulnerabilities</h3>
+    <p>
+      Using tools like `gdb`, `objdump`, and `checksec`, we identify vulnerable functions (like `gets()`, `strcpy()`, etc.) in binaries that lack modern protections (ASLR, NX, etc.).
+    </p>
+
+    <h3>Exploitation Process</h3>
+    <ul>
+      <li>Find an input vector that triggers a crash.</li>
+      <li>Craft a payload that overwrites the return address.</li>
+      <li>Inject shellcode or return-to-libc to achieve execution.</li>
+    </ul>
+
+    <h3>Mitigations</h3>
+    <p>
+      Developers should use secure functions (e.g., `fgets()`), enable stack canaries, ASLR, and DEP/NX. Regular audits of legacy systems are also crucial.
+    </p>
+
+    <a class="back-link" href="writeups.html">&larr; Back to Write-ups</a>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writeups - Scofield Tech Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #87CEEB;
+            --secondary-blue: #1E90FF;
+            --accent-blue: #B0E0E6;
+            --dark-blue: #4682B4;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: var(--shadow);
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-blue);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .writeup-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .writeup-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .writeup-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .writeup-card p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .writeup-card .date {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+        
+        .writeup-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .writeup-card .tag {
+            background-color: var(--accent-blue);
+            color: var(--dark-blue);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .writeup-card a {
+            display: inline-block;
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .writeup-card a:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        footer {
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        footer p {
+            margin-bottom: 1rem;
+        }
+        
+        footer a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .writeups-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .writeup-card {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="writeups.html">Write-ups</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section>
+        <h2>Security Write-ups</h2>
+        <p>Explore our collection of detailed cybersecurity write-ups, tutorials, and vulnerability analyses. Learn from real-world examples and enhance your security knowledge.</p>
+    </section>
+    
+    <section>
+        <h2>National Cybersecurity Solutions</h2>
+        <p>At Scofield Tech Hub, we don't just share knowledge - we provide comprehensive cybersecurity solutions nationwide. Our team of experts delivers enterprise-grade security services to organizations of all sizes across the country.</p>
+        <div class="writeups-grid" style="margin-top: 2rem;">
+            <div class="writeup-card">
+                <h3>Security Assessments & Audits</h3>
+                <p>Comprehensive evaluation of your organization's security posture, identifying vulnerabilities and compliance gaps with detailed remediation recommendations.</p>
+            </div>
+            <div class="writeup-card">
+                <h3>Incident Response</h3>
+                <p>24/7 emergency response to security breaches and cyber attacks, with rapid containment, forensic investigation, and recovery assistance.</p>
+            </div>
+            <div class="writeup-card">
+                <h3>Penetration Testing</h3>
+                <p>Authorized simulated attacks against your systems to identify vulnerabilities before real attackers do, with actionable remediation guidance.</p>
+            </div>
+            <div class="writeup-card">
+                <h3>Security Training & Awareness</h3>
+                <p>Customized training programs to educate your staff on security best practices, phishing awareness, and creating a security-conscious culture.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="writeups-grid">
+            <!-- Writeup 1 -->
+            <div class="writeup-card">
+                <div class="date">May 01, 2025</div>
+                <h3>Buffer Overflow Exploitation in Legacy Systems</h3>
+                <div class="tags">
+                    <span class="tag">Exploitation</span>
+                    <span class="tag">Binary Analysis</span>
+                </div>
+                <p>A comprehensive guide to identifying and exploiting buffer overflow vulnerabilities in legacy systems. This write-up includes step-by-step instructions and mitigation strategies.</p>
+                <a href="writeup1.html">Read More</a>
+            </div>
+            
+            <!-- Writeup 2 -->
+            <div class="writeup-card">
+                <div class="date">April 15, 2025</div>
+                <h3>Analyzing the Latest Ransomware Techniques</h3>
+                <div class="tags">
+                    <span class="tag">Malware</span>
+                    <span class="tag">Forensics</span>
+                </div>
+                <p>A deep dive into emerging ransomware techniques observed in recent attacks. Learn about encryption methods, distribution vectors, and defense strategies.</p>
+                <a href="writeup2.html">Read More</a>
+            </div>
+            
+            <!-- Writeup 3 -->
+            <div class="writeup-card">
+                <div class="date">March 27, 2025</div>
+                <h3>Web Application Security: OWASP Top 10 Deep Dive</h3>
+                <div class="tags">
+                    <span class="tag">Web Security</span>
+                    <span class="tag">OWASP</span>
+                </div>
+                <p>An in-depth analysis of the OWASP Top 10 web application vulnerabilities with practical examples and demonstration of exploit techniques.</p>
+                <a href="writeup3.html">Read More</a>
+            </div>
+            
+            <!-- Writeup 4 -->
+            <div class="writeup-card">
+                <div class="date">March 10, 2025</div>
+                <h3>Reverse Engineering IoT Firmware</h3>
+                <div class="tags">
+                    <span class="tag">IoT</span>
+                    <span class="tag">Reverse Engineering</span>
+                </div>
+                <p>A tutorial on extracting and analyzing firmware from IoT devices to discover hidden vulnerabilities and backdoors that could compromise your network.</p>
+                <a href="writeup4.html">Read More</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Scofield Tech Hub. All rights reserved.</p>
+        <div>
+            <a href="https://twitter.com/PAscofield" target="_blank"><i class="fab fa-twitter"></i> Twitter</a> |
+            <a href="https://linkedin.com/in/scofield-tech-202482358" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
+            <a href="https://instagram.com/scofield_tech_hub" target="_blank"><i class="fab fa-instagram"></i> Instagram</a> |
+            <a href="https://github.com/scofield000" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>

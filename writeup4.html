@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reverse Engineering IoT Firmware - Scofield Tech Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 2rem;
+      background: linear-gradient(135deg, #87CEEB, #B0E0E6);
+      color: #2c3e50;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #1E90FF;
+      margin-bottom: 0.5rem;
+    }
+    .meta {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .tags span {
+      background: #B0E0E6;
+      color: #4682B4;
+      padding: 0.3rem 0.8rem;
+      margin-right: 0.5rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #1E90FF;
+      font-weight: 500;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reverse Engineering IoT Firmware</h1>
+    <div class="meta">Published: May 02, 2025</div>
+    <div class="tags">
+      <span>IoT</span>
+      <span>Reverse Engineering</span>
+    </div>
+
+    <p>
+      In this tutorial, we explore the process of reverse engineering firmware from Internet of Things (IoT) devices. These devices are increasingly integrated into home and industrial networks, but often contain overlooked vulnerabilities and backdoors due to lax security practices.
+    </p>
+
+    <h3>Why Firmware Analysis Matters</h3>
+    <p>
+      Firmware is the low-level software running directly on IoT hardware. By analyzing it, security researchers can uncover hardcoded credentials, insecure APIs, backdoors, and logic flaws that manufacturers may have missed or intentionally hidden.
+    </p>
+
+    <h3>Extracting the Firmware</h3>
+    <p>
+      Common techniques include:
+      <ul>
+        <li>Downloading updates from vendor websites.</li>
+        <li>Using UART/JTAG to dump memory from the device.</li>
+        <li>Intercepting over-the-air (OTA) updates.</li>
+      </ul>
+    </p>
+
+    <h3>Analyzing the Firmware</h3>
+    <p>
+      Tools like <code>binwalk</code>, <code>firmware-mod-kit</code>, and <code>Ghidra</code> allow us to extract and reverse binaries. Static analysis reveals suspicious strings, configuration files, and system architecture. Dynamic analysis on emulated environments can uncover behavioral issues.
+    </p>
+
+    <h3>Case Study: Uncovering a Hidden Telnet Backdoor</h3>
+    <p>
+      In one instance, we identified an unprotected Telnet daemon within extracted firmware. It bypassed standard authentication mechanisms, allowing remote root access. This illustrates how such oversights can pose serious risks to network security.
+    </p>
+
+    <h3>Defensive Measures</h3>
+    <p>
+      Vendors must adopt secure coding practices, regularly audit firmware, and provide timely patches. Consumers should apply updates, segment IoT networks, and avoid default credentials.
+    </p>
+
+    <a class="back-link" href="writeups.html">&larr; Back to Write-ups</a>
+  </div>
+</body>
+</html>

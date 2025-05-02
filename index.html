@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scofield Tech Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #87CEEB;
+            --secondary-blue: #1E90FF;
+            --accent-blue: #B0E0E6;
+            --dark-blue: #4682B4;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: var(--shadow);
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        #home {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        #home h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+        
+        #home p {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-blue);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        #tools, #services {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .tool-card, .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-card:hover, .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-card h3, .service-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .tool-card p, .service-card p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .tool-card a, .service-card a {
+            display: inline-block;
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .tool-card a:hover, .service-card a:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .highlight-box {
+            background-color: rgba(176, 224, 230, 0.3);
+            border-left: 4px solid var(--secondary-blue);
+            padding: 1.5rem;
+            border-radius: 0 5px 5px 0;
+            margin: 1rem 0;
+        }
+        
+        .highlight-box p {
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+        
+        footer {
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        footer p {
+            margin-bottom: 1rem;
+        }
+        
+        footer a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            #tools, #services {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            #home h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="writeups.html">Write-ups</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h1>SCOFIELD TECH HUB</h1>
+        <p>Your trusted partner for nationwide cybersecurity solutions and resources</p>
+    </section>
+    
+    <section id="about">
+        <h2>About Scofield Tech Hub</h2>
+        <div class="about-content">
+            <p>Founded in 2024, Scofield Tech Hub has rapidly emerged as a leader in the cybersecurity industry, offering both comprehensive educational resources and professional security solutions nationwide.</p>
+            
+            <div class="highlight-box">
+                <p>Our mission is to strengthen the digital resilience of organizations across the nation through cutting-edge cybersecurity expertise, accessible education, and customized security solutions.</p>
+            </div>
+            
+            <p>What sets Scofield Tech Hub apart is our dual commitment to:</p>
+            <p><strong>Education & Resources:</strong> We believe in democratizing cybersecurity knowledge. Our extensive library of tools, tutorials, and write-ups helps professionals and enthusiasts alike stay current with evolving security challenges.</p>
+            <p><strong>Professional Services:</strong> Beyond education, our team of certified security experts delivers enterprise-grade cybersecurity solutions to organizations of all sizes across the country, from vulnerability assessments to incident response.</p>
+            
+            <p>With a client roster spanning multiple industries including healthcare, finance, government, and manufacturing, Scofield Tech Hub has established a reputation for excellence, integrity, and results-driven security solutions that protect what matters most.</p>
+        </div>
+    </section>
+    
+    <section id="services">
+        <h2>Our Nationwide Cybersecurity Services</h2>
+        <!-- Service 1 -->
+        <div class="service-card">
+            <h3>Security Assessments & Audits</h3>
+            <p>Our comprehensive security assessments evaluate your organization's complete security posture, identifying vulnerabilities, compliance gaps, and areas for improvement with detailed remediation recommendations.</p>
+            <a href="#contact">Learn More</a>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="service-card">
+            <h3>Incident Response</h3>
+            <p>When security incidents occur, our 24/7 emergency response team provides rapid containment, forensic investigation, and recovery assistance to minimize damage and restore operations quickly.</p>
+            <a href="#contact">Learn More</a>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="service-card">
+            <h3>Penetration Testing</h3>
+            <p>Our authorized simulated attacks against your systems identify vulnerabilities before real attackers do. We provide actionable remediation guidance to strengthen your defenses against real-world threats.</p>
+            <a href="#contact">Learn More</a>
+        </div>
+        
+        <!-- Service 4 -->
+        <div class="service-card">
+            <h3>Security Training & Awareness</h3>
+            <p>Our customized training programs educate your staff on security best practices, phishing awareness, and creating a security-conscious culture to reduce the risk of human-factor security breaches.</p>
+            <a href="#contact">Learn More</a>
+        </div>
+    </section>
+    
+    <section id="tools">
+        <h2>Cybersecurity Tools</h2>
+        <!-- Tool 1: Ghidra -->
+        <div class="tool-card">
+            <h3>Ghidra</h3>
+            <p>A software reverse engineering (SRE) framework created by the NSA. Ghidra helps analyze malicious code and malware like viruses, providing tools to understand how they work.</p>
+            <a href="https://ghidra-sre.org/" target="_blank">Learn More</a>
+        </div>
+        
+        <!-- Tool 2: Wireshark -->
+        <div class="tool-card">
+            <h3>Wireshark</h3>
+            <p>A network protocol analyzer used to capture and analyze network traffic. Essential for network troubleshooting, analysis, and security investigations.</p>
+            <a href="https://www.wireshark.org/" target="_blank">Learn More</a>
+        </div>
+                <!-- Tool 3: Burp Suite -->
+                <div class="tool-card">
+                    <h3>Burp Suite</h3>
+                    <p>A powerful platform for performing security testing of web applications. It includes tools for mapping the application, analyzing requests, and detecting vulnerabilities like XSS and SQLi.</p>
+                    <a href="https://portswigger.net/burp" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 4: Nmap -->
+                <div class="tool-card">
+                    <h3>Nmap</h3>
+                    <p>A network scanning tool used for discovering hosts, open ports, and running services. Useful for network inventory, managing service upgrade schedules, and monitoring host uptime.</p>
+                    <a href="https://nmap.org/" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 5: Metasploit -->
+                <div class="tool-card">
+                    <h3>Metasploit</h3>
+                    <p>A penetration testing framework that helps security professionals find, exploit, and validate vulnerabilities in systems and networks.</p>
+                    <a href="https://www.metasploit.com/" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 6: John the Ripper -->
+                <div class="tool-card">
+                    <h3>John the Ripper</h3>
+                    <p>A fast password cracker that detects weak passwords and performs dictionary attacks, brute force attacks, and more.</p>
+                    <a href="https://www.openwall.com/john/" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 7: Aircrack-ng -->
+                <div class="tool-card">
+                    <h3>Aircrack-ng</h3>
+                    <p>A suite of tools for auditing wireless networks, including capturing packets, cracking WEP/WPA keys, and replay attacks.</p>
+                    <a href="https://www.aircrack-ng.org/" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 8: Autopsy -->
+                <div class="tool-card">
+                    <h3>Autopsy</h3>
+                    <p>A digital forensics platform used for hard drive and smartphone investigations. It supports timeline analysis, keyword search, and web artifact recovery.</p>
+                    <a href="https://www.autopsy.com/" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 9: sqlmap -->
+                <div class="tool-card">
+                    <h3>sqlmap</h3>
+                    <p>An open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over database servers.</p>
+                    <a href="https://sqlmap.org/" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 10: Nikto -->
+                <div class="tool-card">
+                    <h3>Nikto</h3>
+                    <p>A web server scanner that checks for outdated server software, dangerous files, and configuration issues that may pose security risks.</p>
+                    <a href="https://cirt.net/Nikto2" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 11: Volatility -->
+                <div class="tool-card">
+                    <h3>Volatility</h3>
+                    <p>A memory forensics tool used to extract digital artifacts from RAM dumps. It’s widely used in malware analysis and incident response.</p>
+                    <a href="https://www.volatilityfoundation.org/" target="_blank">Learn More</a>
+                </div>
+        
+                <!-- Tool 12: Hydra -->
+                <div class="tool-card">
+                    <h3>Hydra</h3>
+                    <p>A very fast network logon cracker that supports many protocols to attack (e.g., FTP, SSH, Telnet). Useful for brute force testing.</p>
+                    <a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank">Learn More</a>
+                </div>
+        
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Ready to enhance your organization's security posture or have questions about our services? Our team of cybersecurity experts is ready to assist you.</p>
+        
+        <p>Email us at: <strong><a href="mailto:scofieldtechhub@gmail.com">scofieldtechhub@gmail.com</a></strong></p>
+        <p>Or reach out through our social media channels below:</p>
+    </section>
+    
+    </section>
+    
+    
+<footer>
+    <p>&copy; 2025 Scofield Tech Hub. All rights reserved.</p>
+    <div>
+        <a href="https://twitter.com/PAscofield" target="_blank"><i class="fab fa-twitter"></i> Twitter</a> |
+        <a href="https://linkedin.com/in/scofield-tech-202482358" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
+        <a href="https://instagram.com/scofield_tech_hub" target="_blank"><i class="fab fa-instagram"></i> Instagram</a> |
+        <a href="https://github.com/scofield000" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+</footer>
+</body>
+</html>
